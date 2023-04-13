@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>111</title>
+      <script>
+          window.clientWidth = document.documentElement.clientWidth
+          window.clientHeight = document.documentElement.clientHeight
+          window.pageWidth = clientWidth / clientHeight > 16 / 9 ? clientHeight * (16 / 9) : clientWidth
+          window.pageHeight = pageWidth / (16 / 9)
+          const string = `<style>html{
+      font-size: ${pageWidth / 100}px
+    }</style>`
+          document.write(string)
+
+      </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+        app.style.width = pageWidth + 'px'
+        app.style.height = pageHeight + 'px'
+        app.style.marginTop = (clientHeight - pageHeight) / 2 + 'px'
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

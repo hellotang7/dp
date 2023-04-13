@@ -1,0 +1,22 @@
+{
+  "name": "vue-dp",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.47",
+    "echarts": "5.0.2",
+    "vue-router": "^3.0.1"
+
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "vite": "^4.2.0",
+    "less-loader": "^4.1.0"
+  }
+}

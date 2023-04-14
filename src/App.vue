@@ -3,28 +3,63 @@ import HelloWorld from './components/header.vue'
 import * as echarts from 'echarts';
 import { onMounted, ref } from 'vue'
 
+const px = (n) => n /2420*pageWidth;
 const divRef = ref(null);
 onMounted(() => {
-  const myChart = echarts.init(divRef.current)
+  // console.log(divRef.current)
+  // console.log(divRef.value)
+  const myChart = echarts.init(divRef.value)
   myChart.setOption({
-    title: {
-      text: 'ECharts 入门示例'
+    textStyle: {
+      fontSize: px(12),
+      color: '#79839E'
     },
-    tooltip: {},
-    legend: {
-      data: ['销量']
-    },
+    title: {show: false},
+    legend: {show: false},
     xAxis: {
-      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+      data: ['兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区'],
+      axisTick: {show: false},
+      axisLine: {
+        lineStyle: {color: '#083B70'}
+      },
+      axisLabel: {
+        margin:px(10),
+        fontSize: px(12),
+        formatter(val) {
+          if (val.length > 2) {
+            const array = val.split('');
+            array.splice(2, 0, '\n');
+            return array.join('');
+          } else {
+            return val;
+          }
+        }
+      },
+
     },
-    yAxis: {},
-    series: [
-      {
-        name: '销量',
-        type: 'bar',
-        data: [5, 20, 36, 10, 10, 20]
+    grid: {
+      x: px(40),
+      y: px(40),
+      x2: px(35),
+      y2: px(45 ),
+    },
+    yAxis: {
+
+      splitLine: {show: false},
+      axisLine: {
+        show: true,
+        lineStyle: {color: '#083B70'}
+
+      },
+      axisLabel: {
+        margin:px(6),
+        fontSize: px(12)
       }
-    ]
+    },
+    series: [{
+      type: 'bar',
+      data: [10, 20, 36, 41, 15, 26, 37, 18, 29]
+    }]
 
   })
 
@@ -50,7 +85,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 
 .home {
   flex: 1;
@@ -62,12 +97,11 @@ onMounted(() => {
 
   > main {
     padding-top: 30 / 2420 * 100rem;
-    border: 1px solid red;
     flex: 1;
     display: grid;
-    //grid-template:
-    //"box1 box2 box4 box5" 755fr
-    //"box3 box3 box4 box5" 363fr / 366fr 361fr 811fr 747fr;
+    /*grid-template:
+    "box1 box2 box4 box5" 755fr
+    "box3 box3 box4 box5" 363fr / 366fr 361fr 811fr 747fr;*/
     grid-template-rows: 755fr 363fr;
     grid-template-columns: 366fr 361fr 811fr 747fr;
     grid-gap: 28 / 2420 * 100rem;
@@ -91,14 +125,14 @@ onMounted(() => {
         bottom: 0;
         top: 0;
         border-radius: 4px;
-        box-shadow: 17px 0 0 -16px #0e325f,
-                    -17px 0 0 -16px #0e325f,
-                    0 17px 0 -16px #0e325f,
-                    0 -17px 0 -16px #0e325f,
-                    9px 0 0 -8px #0d4483,
-                   -9px 0 0 -8px #0d4483,
-                    0 9px 0 -8px #0d4483,
-                    0 -9px 0 -8px #0d4483,;
+        box-shadow: 17px 0 0 -16px #0e325f
+                    -17px 0 0 -16px #0e325f
+                    0 17px 0 -16px #0e325f
+                    0 -17px 0 -16px #0e325f
+                    9px 0 0 -8px #0d4483
+                   -9px 0 0 -8px #0d4483
+                    0 9px 0 -8px #0d4483
+                    0 -9px 0 -8px #0d4483
       }
     }
 
@@ -138,7 +172,6 @@ onMounted(() => {
         text-shadow: 0 0 3 / 2420 * 100rem white;
       }
       .chart{
-        border: 1px solid red;
         flex: 1;
         width: 100%;
       }

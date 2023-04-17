@@ -35,9 +35,6 @@
 .战果对比 {
   height: 100%;
 
-  h2 {
-  }
-
   > table {
     margin-top: 38 / 2420 * 100rem;
     border-collapse: collapse;
@@ -51,7 +48,8 @@
       }
     }
     tbody {
-      td {height: 50 / 2420 * 100rem;
+      td {
+        height: 50 / 2420 * 100rem;
           width: 84 / 2420 * 100rem;
           background: #1c2456;
       }

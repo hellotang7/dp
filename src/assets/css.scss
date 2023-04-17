@@ -5,7 +5,6 @@
   flex-direction: column;
   align-items: center;
   h2 {
-
     flex-shrink: 0;
     border: 1px solid #0a5299;
     border-bottom-left-radius: 4px;
@@ -18,5 +17,53 @@
   .chart{
     flex: 1;
     width: 100%;
+  }
+}
+
+
+.图1,.图2,.图3{
+  //border: 1px solid #08397d;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  .legend {
+    height: 40 / 2420 * 100rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > span {
+      display: inline-block;
+      width: 16 / 2420 * 100rem;
+      height: 10 / 2420 * 100rem;
+      border-radius: 4 / 2420 * 100rem;
+      margin: 0 10 / 2420 * 100rem;
+    }
+  }
+  .male {
+    background: #33a4fa;
+  }
+
+  .female {
+    background: #8d70f8;
+  }
+  .chart {
+    flex: 1;
+    position: relative;
+    display: flex;
+
+    > .main {
+      flex: 1;
+    }
+
+    > .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #33a4fa;
+      font-size: 40 / 2420 * 100rem;
+      text-shadow: 0 0 20 / 2420 * 100rem #33a4fa;
+      font-weight: bold;
+    }
   }
 }

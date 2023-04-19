@@ -28,7 +28,9 @@ onMounted(() => {
 
 <template>
   <div class="home">
-    <header><span>{{ state.times }}</span></header>
+    <header>
+      <span>{{ state.times }}</span>
+    </header>
     <main>
 
       <section class=" section1">
@@ -66,7 +68,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="bordered row2 案发街道">
-          <h2>案发街道统计</h2>
+          <h2>案发省份统计</h2>
           <div class="charts">
             <Chart12/>
             <Chart13/>
@@ -106,7 +108,7 @@ position: relative;
       left: 57%;
       top: 68%;
       font-size: 22 / 2420 * 100rem;
-      color: #6d929d;
+      color: #eee;
       text-shadow: 0 0 10px #1d393d, 0 0 20px #1d393d, 0 0 30px #1d393d, 0 0 40px #1d393d;
     }
   }

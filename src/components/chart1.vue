@@ -20,7 +20,7 @@ import {createEchartsOptions} from "../assets/create-echarts-options.js";
         myChart = echarts.init(divRef.value)
         myChart.setOption(createEchartsOptions({
           xAxis: {
-            data: ['兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区'],
+            data: ['浙江省', '安徽省', '江苏省', '山东省', '河南省', '陕西省', '河北省', '云南省', '贵州省'],
             axisTick: {show: false},
             axisLine: {
               lineStyle: {color: '#083B70'}

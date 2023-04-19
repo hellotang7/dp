@@ -50,7 +50,7 @@
     tbody {
       td {
         height: 50 / 2420 * 100rem;
-          width: 84 / 2420 * 100rem;
+          width: 88 / 2420 * 100rem;
           background: #1c2456;
       }
 

@@ -13,15 +13,15 @@ export default {
   setup() {
     const divRef = ref(null);
     const data = [
-      {value: 0.08, name: '东岗路'},
-      {value: 0.06, name: '段家滩'},
-      {value: 0.11, name: '雁北'},
-      {value: 0.09, name: '五泉山'},
-      {value: 0.12, name: '中山路'},
-      {value: 0.06, name: '庆阳路'},
-      {value: 0.08, name: '武都路'},
-      {value: 0.08, name: '酒泉路'},
-      {value: 0.08, name: '天水路'},
+      {value: 0.08, name: '浙江省'},
+      {value: 0.06, name: '安徽省'},
+      {value: 0.11, name: '江苏省'},
+      {value: 0.09, name: '山东省'},
+      {value: 0.12, name: '河南省'},
+      {value: 0.06, name: '陕西省'},
+      {value: 0.08, name: '河北省'},
+      {value: 0.08, name: '云南省'},
+      {value: 0.08, name: '贵州省'},
     ];
     onMounted(() => {
       const myChart = echarts.init(divRef.value)

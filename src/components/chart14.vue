@@ -79,7 +79,10 @@
 
 
   > table {
-    margin: auto 18 / 2420 * 100rem ;
+    width: 95%;
+    table-layout: fixed;
+    //margin-top: px(25);
+    margin:  18 / 2420 * 100rem ;
     border-collapse: collapse;
 
     th, td {
@@ -88,14 +91,14 @@
 
     thead {
       th {
-                height: 70 / 2420 * 100rem;
+                height: 60 / 2420 * 100rem;
                 box-shadow: inset 0 0 60 / 2420 * 100rem 0 #1f3d85;
       }
     }
 
     tbody {
       td {
-              height: 26 / 2420 * 100rem;
+              height: 28 / 2420 * 100rem;
                 width: 84 / 2420 * 100rem;
                 background: #1c2456;
       }

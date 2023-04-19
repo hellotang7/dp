@@ -1,10 +1,9 @@
 <template>
   <div ref="divRef" class="chart"></div>
-
 </template>
 
 <script>
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 import * as echarts from "echarts";
 import {px} from "../assets/px.js";
 import {createEchartsOptions} from "../assets/create-echarts-options.js";
@@ -12,10 +11,12 @@ import {createEchartsOptions} from "../assets/create-echarts-options.js";
 export default {
   setup() {
     const divRef = ref(null);
-    onMounted(() => {
-      const myChart = echarts.init(divRef.value)
-      myChart.setOption(createEchartsOptions({
+    let myChart = null;
+    const data = ref([40, 22, 20, 18, 32]);
 
+    onMounted(() => {
+      myChart = echarts.init(divRef.value)
+      myChart.setOption(createEchartsOptions({
         xAxis: {
           data: ['入室抢劫', '当街偷盗', '团伙诈骗', '刑事案件', '民事案件'],
           axisTick: {show: false},
@@ -34,7 +35,6 @@ export default {
             }
           },
         },
-
         yAxis: {
           splitLine: {show: false},
           axisLine: {
@@ -44,7 +44,7 @@ export default {
         },
         series: [{
           type: 'bar',
-          data: [40, 22, 20, 18, 32],
+          data: data.value,
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
             offset: 0,
             color: '#0A97FB'
@@ -53,10 +53,19 @@ export default {
             color: '#1E34FA'
           }]),
         }]
-
       }))
-    })
-    return {divRef}
+    });
+
+    setInterval(() => {
+      data.value = [Math.random() * 40, Math.random() * 40, Math.random() * 40, Math.random() * 40, Math.random() * 40]
+      myChart.setOption({
+        series: [{
+          data: data.value
+        }]
+      })
+    }, 2000);
+
+    return {divRef, data}
   }
 }
 </script>

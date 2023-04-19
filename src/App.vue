@@ -13,11 +13,22 @@ import Chart11 from "./components/chart11.vue";
 import Chart12 from "./components/chart12.vue";
 import Chart13 from "./components/chart13.vue";
 import Chart14 from "./components/chart14.vue";
+import {onMounted, reactive} from "vue";
+
+
+const state = reactive({
+  times: new Date().toLocaleString()//格式化之后的当前时间
+})
+onMounted(() => {
+  setInterval(() => {
+    state.times = new Date().toLocaleString();
+  }, 1000);
+});
 </script>
 
 <template>
   <div class="home">
-    <header></header>
+    <header><span>{{ state.times }}</span></header>
     <main>
 
       <section class=" section1">
@@ -89,6 +100,15 @@ import Chart14 from "./components/chart14.vue";
     height: 99/ 2420 * 100rem;
     background-size: cover;
     background-image: url("./assets/header.png");
+position: relative;
+    span {
+      position: absolute;
+      left: 57%;
+      top: 68%;
+      font-size: 22 / 2420 * 100rem;
+      color: #6d929d;
+      text-shadow: 0 0 10px #1d393d, 0 0 20px #1d393d, 0 0 30px #1d393d, 0 0 40px #1d393d;
+    }
   }
 
   footer {
@@ -168,6 +188,7 @@ import Chart14 from "./components/chart14.vue";
         }
       }
     }
+
     > .section5 {
       grid-area: box5;
 
@@ -185,15 +206,13 @@ import Chart14 from "./components/chart14.vue";
     }
 
 
-
-
-
-    .年龄段,.案发类型, .案发街道, .作案手段{
+    .年龄段, .案发类型, .案发街道, .作案手段 {
       display: flex;
       flex-direction: column;
+      align-items: center;
 
       h2 {
-        display: inline-block;
+
         flex-shrink: 0;
         border: 1px solid #0a5299;
         border-bottom-left-radius: 4px;
@@ -203,18 +222,19 @@ import Chart14 from "./components/chart14.vue";
         padding: 10 / 2420 * 100rem 28 / 2420 * 100rem;
         text-shadow: 0 0 3 / 2420 * 100rem white;
       }
-      .charts{
-      width: 100%;
-      flex: 1;
-      display: flex;
+
+      .charts {
+        width: 100%;
+        flex: 1;
+        display: flex;
       }
     }
-    .section1,.section2,.section4,.section5{
+
+    .section1, .section2, .section4, .section5 {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-
 
 
   }

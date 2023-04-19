@@ -67,7 +67,51 @@ export default {
 
 
       }))
+
+      setInterval(()=>{
+        myChart.clear()
+        myChart.setOption(createEchartsOptions({
+          xAxis: {show: false},
+          yAxis: {show: false},
+          grid: {x: 0, x2: 0, y: 0, y2: 0, containLabel: true},
+          legend: {
+            orient: 'vertical',
+            left: 'left',
+            top: 'center',
+            textStyle: {color: 'white'},
+            itemWidth: px(10),
+            itemHeight: px(10),
+            formatter(name) {
+              const value = data.find(i => i.name === name)?.value * 100 + '%';
+              return name + ' ' + value;
+            }
+          },
+          series: [
+            {
+              center: ['60%', '50%'],
+              type: 'pie',
+              radius: '80%',
+              label: {show: false},
+              labelLine: {show: false},
+              data: data,
+              emphasis: {
+                itemStyle: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              }
+            }
+          ]
+
+
+        }))
+      },3000)
+
     })
+
+
+
     return {divRef}
   }
 }

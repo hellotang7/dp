@@ -13,8 +13,11 @@ import {createEchartsOptions} from "../assets/create-echarts-options.js";
   export default {
     setup(){
       const divRef = ref(null);
+      let myChart =null
+      const data = ref([10, 20, 36, 41, 15, 26, 37, 18, 29])
+
       onMounted(() => {
-        const myChart = echarts.init(divRef.value)
+        myChart = echarts.init(divRef.value)
         myChart.setOption(createEchartsOptions({
           xAxis: {
             data: ['兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区'],
@@ -49,13 +52,25 @@ import {createEchartsOptions} from "../assets/create-echarts-options.js";
           },
           series: [{
             type: 'bar',
-            data: [10, 20, 36, 41, 15, 26, 37, 18, 29]
+            data: data.value
           }]
 
         }))
+      });
 
-      })
-      return {divRef}
+
+      setInterval(() => {
+        data.value = data.value.map(item => item + Math.floor(Math.random() * 10) + 1)
+        myChart.setOption({
+          series: [{
+            data: data.value
+          }]
+        })
+      }, 1000);
+
+      return {divRef, data}
+
+
     },
 
   }

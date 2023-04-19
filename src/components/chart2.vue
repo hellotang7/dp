@@ -47,7 +47,7 @@ export default {
           {name: '新区公安局', 2011: 2, 2012: 3},
         ]
         x(newData)
-      },1000)
+      },2000)
     })
 
     const x = (data) => {

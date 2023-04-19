@@ -15,6 +15,7 @@
 import {onMounted, ref} from "vue";
 import * as echarts from "echarts";
 import {px} from "../assets/px.js";
+import {createEchartsOptions} from "../assets/create-echarts-options.js";
 
 export default {
   setup() {
@@ -52,6 +53,43 @@ export default {
         ]
 
       })
+
+      setInterval(()=>{
+        myChart.clear()
+        myChart.setOption({
+
+          color: ['#8D70F8', '#33A4FA'],
+          xAxis: {show: false},
+          yAxis: {show: false},
+          legend: {show: false},
+          series: [
+            {
+              name: '访问来源',
+              type: 'pie',
+              radius: ['70%', '90%'],
+              avoidLabelOverlap: false,
+              label: {
+                show: true, position: 'inside', textStyle: {color: 'white', fontSize: px(20)},
+                formatter(options) {
+                  return options.value * 100 + '%';
+                }
+              },
+              labelLine: {show: false},
+              itemStyle: {
+                borderColor: '#0F113A',
+                borderWidth: px(4)
+              },
+              data: [
+                {value: 0.2, name: '女'},
+                {value: 0.8, name: '男'},
+              ]
+            }
+          ]
+
+        })
+      },3000)
+
+
     })
     return {divRef}
   }

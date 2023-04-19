@@ -13,13 +13,50 @@ import {createEchartsOptions} from "../assets/create-echarts-options.js";
 export default {
   setup(){
     const divRef = ref(null);
-    onMounted(() => {
-      const myChart = echarts.init(divRef.value)
-      myChart.setOption(createEchartsOptions({
+    const myChart = ref(null)
+    const data = [
+      {name: '0', 2011:  0.15},
+      {name: '2', 2011: 0.13},
+      {name: '4', 2011:  0.11},
+      {name: '6', 2011:0.13},
+      {name: '8', 2011: 0.14},
+      {name: '10', 2011:0.15},
+      {name: '12', 2011: 0.16},
+      {name: '14', 2011:0.18},
+      {name: '16', 2011: 0.21},
+      {name: '18', 2011: 0.19},
+      {name: '20', 2011: 0.17},
+      {name: '22', 2011: 0.16},
+      {name: '24', 2011: 0.15},
+    ]
+onMounted(()=>{
+  setInterval(()=>{
+    const newData = [
+      {name: '0', 2011:  Math.random() / 10},
+      {name: '2', 2011: Math.random() / 10},
+      {name: '4', 2011:  Math.random() / 10},
+      {name: '6', 2011:Math.random() / 10},
+      {name: '8', 2011: Math.random() / 10},
+      {name: '10', 2011:Math.random() / 10},
+      {name: '12', 2011: Math.random() / 10},
+      {name: '14', 2011:Math.random() / 10},
+      {name: '16', 2011: Math.random() / 10},
+      {name: '18', 2011: Math.random() / 10},
+      {name: '20', 2011: Math.random() / 10},
+      {name: '22', 2011: Math.random() / 10},
+      {name: '24', 2011: Math.random() / 10},
+    ]
+    x(newData)
+  },2000)
+})
+
+
+    const x = (data) =>{
+      myChart.value.setOption(createEchartsOptions({
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: ['0', '2', '4', '6', '8', '10', '12', '14', '16', '18', '20', '22', '24'],
+          data:data.map(i=>i.name),
           splitLine: {show: true, lineStyle: {color: '#073E78'}},
           axisTick: {show: false},
           axisLine: {show: false},
@@ -47,11 +84,7 @@ export default {
         },
         series: [
           {
-            data: [ 0.15, 0.13, 0.11,
-              0.13, 0.14, 0.15,
-              0.16, 0.18, 0.21,
-              0.19, 0.17, 0.16,
-              0.15],
+            data:data.map(i=>i[2011]),
             type: 'line',
             symbol: 'circle',
             symbolSize: px(12),
@@ -71,6 +104,11 @@ export default {
 
 
       }))
+    }
+
+    onMounted(() => {
+      myChart.value = echarts.init(divRef.value)
+     x(data)
 
     })
     return {divRef}

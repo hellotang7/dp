@@ -25,41 +25,81 @@ export default {
     const colors = ['#F46064', '#F38E1C', '#1CDB7C', '#8D70F8', '#33A4FA'];
     onMounted(() => {
       const myChart = echarts.init(divRef.value)
-      myChart.setOption(createEchartsOptions({
-        color: colors,
-        xAxis: {show: false},
-        yAxis: {show: false},
-        legend: {show: false},
-        series: [
-          {
-            startAngle: -20,
-            type: 'pie',
-            radius: ['25%', '90%'],
-            avoidLabelOverlap: false,
-            label: {
-              show: true, position: 'outside', textStyle: {color: 'white', fontSize: px(20)},
-              distanceToLabelLine: 0,
-              formatter(options) {
-                return options.value * 100 + '%';
-              }
-            },
-            labelLine: {show: true, length: 0},
-            roseType: 'area',
-            itemStyle: {
-              shadowBlur: px(200),
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
-            },
-            data: [
-              {value: 0.36, name: '刑事案件'},
-              {value: 0.20, name: '民事案件'},
-              {value: 0.18, name: '经济案件'},
-              {value: 0.24, name: '其他案件'},
-            ]
+        myChart.setOption(createEchartsOptions({
+          color: colors,
+          xAxis: {show: false},
+          yAxis: {show: false},
+          legend: {show: false},
+          series: [
+            {
+              startAngle: -20,
+              type: 'pie',
+              radius: ['25%', '90%'],
+              avoidLabelOverlap: false,
+              label: {
+                show: true, position: 'outside', textStyle: {color: 'white', fontSize: px(20)},
+                distanceToLabelLine: 0,
+                formatter(options) {
+                  return options.value * 100 + '%';
+                }
+              },
+              labelLine: {show: true, length: 0},
+              roseType: 'area',
+              itemStyle: {
+                shadowBlur: px(200),
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+              },
+              data: [
+                {value: 0.36, name: '刑事案件'},
+                {value: 0.20, name: '民事案件'},
+                {value: 0.18, name: '经济案件'},
+                {value: 0.24, name: '其他案件'},
+              ]
+            }
+          ]
+
+
+        }))
+
+setInterval(()=>{
+  myChart.clear()
+  myChart.setOption(createEchartsOptions({
+    color: colors,
+    xAxis: {show: false},
+    yAxis: {show: false},
+    legend: {show: false},
+    series: [
+      {
+        startAngle: -20,
+        type: 'pie',
+        radius: ['25%', '90%'],
+        avoidLabelOverlap: false,
+        label: {
+          show: true, position: 'outside', textStyle: {color: 'white', fontSize: px(20)},
+          distanceToLabelLine: 0,
+          formatter(options) {
+            return options.value * 100 + '%';
           }
+        },
+        labelLine: {show: true, length: 0},
+        roseType: 'area',
+        itemStyle: {
+          shadowBlur: px(200),
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        },
+        data: [
+          {value: 0.36, name: '刑事案件'},
+          {value: 0.20, name: '民事案件'},
+          {value: 0.18, name: '经济案件'},
+          {value: 0.24, name: '其他案件'},
         ]
+      }
+    ]
 
 
-      }))
+  }))
+
+},3000)
     })
     return {divRef}
   }
